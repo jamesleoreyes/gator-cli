@@ -1,4 +1,4 @@
-import { setUser } from "src/configs/app";
+import { setUser } from "../configs/app.js";
 
 
 function handlerLogin(cmdName: string, ...args: string[]) {

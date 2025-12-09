@@ -1,6 +1,5 @@
 import fs from 'fs';
 import os from 'os';
-import path from 'path';
 import type { Config } from "../types/index.js";
 
 function getConfigFilePath() {
