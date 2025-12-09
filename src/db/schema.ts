@@ -12,4 +12,20 @@ export const users = pgTable('users', {
 
 type User = typeof users.$inferSelect;
 
-export type { User };
+export const feeds = pgTable('feeds', {
+  id: uuid('id').primaryKey().defaultRandom().notNull(),
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  url: text('url').notNull().unique(),
+  name: text('name').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at')
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+});
+
+type Feed = typeof feeds.$inferSelect;
+
+export type { User, Feed };
