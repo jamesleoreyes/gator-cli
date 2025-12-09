@@ -13,4 +13,7 @@ const runCommand = async (
 ) => registry[cmdName](cmdName, ...args);
 
 export { registerCommand, runCommand };
+export * from './reset.command.js';
 export * from './login.command.js';
+export * from './register.command.js';
+export * from './users.command.js';

@@ -17,7 +17,18 @@ const usersQueries = {
       .from(users)
       .where(eq(users.name, name))
     return result;
-  }
+  },
+
+  async getAllUsers() {
+    const result = await db
+      .select()
+      .from(users);
+    return result;
+  },
+
+  async deleteAllUsers() {
+    await db.delete(users);
+  },
 };
 
 export { usersQueries };
