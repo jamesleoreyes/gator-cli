@@ -24,7 +24,17 @@ const feedQueries = {
       .select()
       .from(feeds)
     return result;
-  }
+  },
+
+  async markFeedFetched(feedId: string) {
+    await db
+      .update(feeds)
+      .set({
+        lastFetchedAt: new Date(Date.now()),
+        updatedAt: new Date(Date.now()),
+      })
+      .where(eq(feeds.id, feedId));
+  },
 };
 
 export { feedQueries };
