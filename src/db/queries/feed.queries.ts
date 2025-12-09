@@ -10,6 +10,14 @@ const feedQueries = {
       .returning();
     return result;
   },
+
+  async getByUrl(url: string) {
+    const [result] = await db
+      .select()
+      .from(feeds)
+      .where(eq(feeds.url, url));
+    return result;
+  },
 };
 
 export { feedQueries };
