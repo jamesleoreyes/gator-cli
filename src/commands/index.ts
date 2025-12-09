@@ -1,12 +1,12 @@
 import { CommandHandler, CommandsRegistry } from "../types/index.js";
 
-const registerCommand = (
+const registerCommand = async (
   registry: CommandsRegistry,
   cmdName: string,
   handler: CommandHandler
 ) => registry[cmdName] = handler;
 
-const runCommand = (
+const runCommand = async (
   registry: CommandsRegistry,
   cmdName: string,
   ...args: string[]
