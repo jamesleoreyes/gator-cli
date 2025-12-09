@@ -1,10 +1,12 @@
 import { handlerLogin, registerCommand, runCommand } from "./commands";
+import { handlerRegister } from "./commands/register.command";
 import { CommandsRegistry } from "./types";
 
 
 async function main() {
   const commandsRegistry: CommandsRegistry = {};
   await registerCommand(commandsRegistry, 'login', handlerLogin);
+  await registerCommand(commandsRegistry, 'register', handlerRegister);
   
   const args = process.argv.slice(2);
   if (args.length === 0) process.exit(1);
