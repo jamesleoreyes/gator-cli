@@ -15,6 +15,13 @@
       "when": 1765245219426,
       "tag": "0001_graceful_christian_walker",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765257081729,
+      "tag": "0002_zippy_magik",
+      "breakpoints": true
     }
   ]
 }

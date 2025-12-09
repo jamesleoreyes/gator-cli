@@ -1,7 +1,8 @@
-import { readConfig } from "src/configs/app.config";
-import { feedQueries } from "src/db/queries/feed.queries";
-import { userQueries } from "src/db/queries/user.queries";
-import { printFeed } from "src/utils/feed.utils";
+import { feedFollowQueries } from "src/db/queries/feedFollow.queries.js";
+import { readConfig } from "../configs/app.config.js";
+import { feedQueries } from "../db/queries/feed.queries.js";
+import { userQueries } from "../db/queries/user.queries.js";
+import { printFeed } from "../utils/feed.utils.js";
 
 async function handlerAddFeed(cmdName: string, ...args: string[]) {
   const [name, url] = args;
@@ -17,6 +18,7 @@ async function handlerAddFeed(cmdName: string, ...args: string[]) {
       name,
       url,
     });
+    await feedFollowQueries.create(newFeed.id, currentUser.id);
     printFeed(newFeed, currentUser);
   } else process.exit(1);
 };

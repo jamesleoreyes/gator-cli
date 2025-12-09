@@ -1,6 +1,17 @@
-import { handlerLogin, handlerResetDb, handlerRegisterUser, registerCommand, runCommand, handlerGetAllUsers, handlerAgg, handlerAddFeed, handlerGetAllFeeds } from "./commands";
+import {
+  registerCommand,
+  runCommand,
+  handlerLogin,
+  handlerResetDb,
+  handlerRegisterUser,
+  handlerGetAllUsers,
+  handlerAgg,
+  handlerAddFeed,
+  handlerGetAllFeeds,
+  handlerFollowFeed
+} from "./commands";
+import { handlerAllFeedsFollowedByUser } from "./commands/following.command";
 import { CommandsRegistry } from "./types";
-
 
 async function main() {
   const commandsRegistry: CommandsRegistry = {};
@@ -11,6 +22,8 @@ async function main() {
   await registerCommand(commandsRegistry, 'agg', handlerAgg);
   await registerCommand(commandsRegistry, 'addfeed', handlerAddFeed);
   await registerCommand(commandsRegistry, 'feeds', handlerGetAllFeeds);
+  await registerCommand(commandsRegistry, 'follow', handlerFollowFeed);
+  await registerCommand(commandsRegistry, 'following', handlerAllFeedsFollowedByUser);
 
   const args = process.argv.slice(2);
   if (args.length === 0) process.exit(1);
