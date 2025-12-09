@@ -1,5 +1,5 @@
 import { usersQueries } from "src/db/queries/user.queries.js";
-import { setUser } from "../configs/app.js";
+import { setUser } from "../configs/app.config.js";
 import { User } from "../db/schema.js";
 
 async function handlerRegister(cmdName: string, ...args: string[]) {

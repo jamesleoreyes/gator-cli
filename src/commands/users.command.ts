@@ -1,4 +1,4 @@
-import { readConfig } from "src/configs/app";
+import { readConfig } from "src/configs/app.config";
 import { usersQueries } from "src/db/queries/user.queries";
 
 
