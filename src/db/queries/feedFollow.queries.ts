@@ -37,7 +37,8 @@ const feedFollowQueries = {
       })
       .from(feedFollows)
       .innerJoin(feeds, eq(feedFollows.feedId, feeds.id))
-      .innerJoin(users, eq(feedFollows.userId, userId));
+      .innerJoin(users, eq(feedFollows.userId, users.id))
+      .where(eq(feedFollows.userId, userId));
 
     return result;
   },

@@ -1,6 +1,10 @@
+import { CommandHandler, UserCommandHandler } from "./command";
+
 type Config = {
   dbUrl: string;
   currentUserName: string;
 }
 
-export type { Config };
+type MiddlewareLoggedIn = (handler: UserCommandHandler) => CommandHandler;
+
+export type { Config, MiddlewareLoggedIn };

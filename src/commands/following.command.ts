@@ -1,16 +1,11 @@
-import { readConfig } from "src/configs/app.config";
 import { feedFollowQueries } from "src/db/queries/feedFollow.queries";
-import { userQueries } from "src/db/queries/user.queries";
+import { User } from "../db/schema.js";
 
-async function handlerAllFeedsFollowedByUser(cmdName: string, ...args: string[]) {
-  const config = readConfig();
-  const currentUser = await userQueries.getUserByName(config.currentUserName);
-  if (currentUser) {
-    const allFeeds = await feedFollowQueries.getAllByUserId(currentUser.id);
+async function handlerAllFeedsFollowedByUser(cmdName: string, user: User, ...args: string[]) {
+  const allFeeds = await feedFollowQueries.getAllByUserId(user.id);
 
-    for (const feed of allFeeds) {
-      console.log(feed.feedName);
-    };
+  for (const feed of allFeeds) {
+    console.log(feed.feedName);
   };
 };
 
