@@ -1,32 +1,20 @@
-import {
-  registerCommand,
-  runCommand,
-  handlerLogin,
-  handlerResetDb,
-  handlerRegisterUser,
-  handlerGetAllUsers,
-  handlerAgg,
-  handlerAddFeed,
-  handlerGetAllFeeds,
-  handlerFollowFeed,
-  handlerUnfollow
-} from "./commands";
-import { handlerAllFeedsFollowedByUser } from "./commands/following.command";
-import { middlewareLoggedIn } from "./middlewares/user.middleware";
-import { CommandsRegistry } from "./types";
+import * as cmd from "./commands/index.js";
+import { middlewareLoggedIn } from "./middlewares/user.middleware.js";
+import { CommandsRegistry } from "./types/index.js";
+import { registerCommand, runCommand } from "./utils/command.utils.js";
 
 async function main(): Promise<void> {
   const commandsRegistry: CommandsRegistry = {};
-  await registerCommand(commandsRegistry, 'reset', handlerResetDb);
-  await registerCommand(commandsRegistry, 'login', handlerLogin);
-  await registerCommand(commandsRegistry, 'register', handlerRegisterUser);
-  await registerCommand(commandsRegistry, 'users', handlerGetAllUsers);
-  await registerCommand(commandsRegistry, 'agg', handlerAgg);
-  await registerCommand(commandsRegistry, 'addfeed', middlewareLoggedIn(handlerAddFeed));
-  await registerCommand(commandsRegistry, 'feeds', handlerGetAllFeeds);
-  await registerCommand(commandsRegistry, 'follow', middlewareLoggedIn(handlerFollowFeed));
-  await registerCommand(commandsRegistry, 'unfollow', middlewareLoggedIn(handlerUnfollow));
-  await registerCommand(commandsRegistry, 'following', middlewareLoggedIn(handlerAllFeedsFollowedByUser));
+  await registerCommand(commandsRegistry, 'reset', cmd.handlerResetDb);
+  await registerCommand(commandsRegistry, 'login', cmd.handlerLogin);
+  await registerCommand(commandsRegistry, 'register', cmd.handlerRegisterUser);
+  await registerCommand(commandsRegistry, 'users', cmd.handlerGetAllUsers);
+  await registerCommand(commandsRegistry, 'agg', cmd.handlerAgg);
+  await registerCommand(commandsRegistry, 'addfeed', middlewareLoggedIn(cmd.handlerAddFeed));
+  await registerCommand(commandsRegistry, 'feeds', cmd.handlerGetAllFeeds);
+  await registerCommand(commandsRegistry, 'follow', middlewareLoggedIn(cmd.handlerFollowFeed));
+  await registerCommand(commandsRegistry, 'unfollow', middlewareLoggedIn(cmd.handlerUnfollow));
+  await registerCommand(commandsRegistry, 'following', middlewareLoggedIn(cmd.handlerAllFeedsFollowedByUser));
 
   const args = process.argv.slice(2);
   if (args.length === 0) process.exit(1);
