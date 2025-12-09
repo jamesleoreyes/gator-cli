@@ -16,17 +16,17 @@ async function fetchFeed(feedURL: string): Promise<RSSFeed> {
 
     const parser = new XMLParser();
     const parsedXML = parser.parse(data);
-    const xmlFeed: RSSFeed = parsedXML.rss;
-    console.debug(JSON.stringify(xmlFeed, null, 2))
+    const rssFeed: RSSFeed = parsedXML.rss;
+    console.debug(JSON.stringify(rssFeed, null, 2))
 
-    if (!xmlFeed.channel) {
-      console.log(`Invalid XML data: ${xmlFeed}`);
+    if (!rssFeed.channel) {
+      console.log(`Invalid XML data: ${rssFeed}`);
       process.exit(1);
     };
 
     let rssItems: RSSItem[] = [];
 
-    const validRSS = validateRSSFeed(xmlFeed);
+    const validRSS = validateRSSFeed(rssFeed);
     const { title, link, description, item: items } = validRSS.channel;
 
     for (const item of items) {
