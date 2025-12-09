@@ -21,3 +21,4 @@ export * from './agg.command.js';
 export * from './addfeed.command.js';
 export * from './feeds.command.js';
 export * from './follow.command.js';
+export * from './unfollow.command.js';
