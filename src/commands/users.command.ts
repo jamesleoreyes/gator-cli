@@ -1,11 +1,10 @@
 import { readConfig } from "src/configs/app.config";
-import { usersQueries } from "src/db/queries/user.queries";
-
+import { userQueries } from "src/db/queries/user.queries";
 
 async function handlerUsers(cmdName: string, ...args: string[]) {
   try {
     const currentUser = readConfig();
-    const users = await usersQueries.getAllUsers();
+    const users = await userQueries.getAllUsers();
     for (const user of users) {
       if (currentUser.currentUserName === user.name) {
         console.log(`* ${user.name} (current)`)

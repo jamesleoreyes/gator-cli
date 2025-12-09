@@ -1,4 +1,4 @@
-import { usersQueries } from "src/db/queries/user.queries.js";
+import { userQueries } from "src/db/queries/user.queries.js";
 import { setUser } from "../configs/app.config.js";
 import { User } from "../db/schema.js";
 
@@ -8,7 +8,7 @@ async function handlerRegister(cmdName: string, ...args: string[]) {
 
   let newUser: User;
   try {
-    newUser = await usersQueries.create(username);
+    newUser = await userQueries.create(username);
   } catch (error) {
     process.exit(1);
   };

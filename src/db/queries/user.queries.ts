@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { db } from "..";
 import { users } from "../schema.js";
 
-const usersQueries = {
+const userQueries = {
   async create(name: string) {
     const [result] = await db
       .insert(users)
@@ -31,4 +31,4 @@ const usersQueries = {
   },
 };
 
-export { usersQueries };
+export { userQueries };
