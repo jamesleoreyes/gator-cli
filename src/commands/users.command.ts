@@ -1,7 +1,7 @@
 import { readConfig } from "src/configs/app.config";
 import { userQueries } from "src/db/queries/user.queries";
 
-async function handlerUsers(cmdName: string, ...args: string[]) {
+async function handlerGetAllUsers(cmdName: string, ...args: string[]) {
   try {
     const currentUser = readConfig();
     const users = await userQueries.getAllUsers();
@@ -17,4 +17,4 @@ async function handlerUsers(cmdName: string, ...args: string[]) {
   };
 };
 
-export { handlerUsers };
+export { handlerGetAllUsers };

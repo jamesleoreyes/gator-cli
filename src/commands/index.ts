@@ -19,3 +19,4 @@ export * from './register.command.js';
 export * from './users.command.js';
 export * from './agg.command.js';
 export * from './addfeed.command.js';
+export * from './feeds.command.js';

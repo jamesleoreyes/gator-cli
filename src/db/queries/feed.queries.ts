@@ -18,6 +18,13 @@ const feedQueries = {
       .where(eq(feeds.url, url));
     return result;
   },
+
+  async getAll() {
+    const result = await db
+      .select()
+      .from(feeds)
+    return result;
+  }
 };
 
 export { feedQueries };

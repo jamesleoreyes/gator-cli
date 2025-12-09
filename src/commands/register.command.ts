@@ -2,7 +2,7 @@ import { userQueries } from "src/db/queries/user.queries.js";
 import { setUser } from "../configs/app.config.js";
 import { User } from "../db/schema.js";
 
-async function handlerRegister(cmdName: string, ...args: string[]) {
+async function handlerRegisterUser(cmdName: string, ...args: string[]) {
   if (args.length === 0) process.exit(1);
   const username = args[0];
 
@@ -18,4 +18,4 @@ async function handlerRegister(cmdName: string, ...args: string[]) {
   console.debug(`New User:\n${JSON.stringify(newUser, null, 2)}`);
 };
 
-export { handlerRegister };
+export { handlerRegisterUser };

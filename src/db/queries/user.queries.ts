@@ -19,6 +19,14 @@ const userQueries = {
     return result;
   },
 
+  async getUserById(id: string) {
+    const [result] = await db
+      .select()
+      .from(users)
+      .where(eq(users.id, id));
+    return result;
+  },
+
   async getAllUsers() {
     const result = await db
       .select()
