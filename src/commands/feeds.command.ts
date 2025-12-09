@@ -2,7 +2,7 @@ import { feedQueries } from "src/db/queries/feed.queries";
 import { userQueries } from "src/db/queries/user.queries";
 
 
-async function handlerGetAllFeeds(cmdName: string, ...args: string[]) {
+async function handlerGetAllFeeds(cmdName: string, ...args: string[]): Promise<void> {
   const feeds = await feedQueries.getAll();
 
   for (const feed of feeds) {

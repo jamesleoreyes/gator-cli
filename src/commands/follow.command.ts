@@ -2,7 +2,7 @@ import { feedQueries } from "src/db/queries/feed.queries";
 import { feedFollowQueries } from "src/db/queries/feedFollow.queries";
 import { User } from "../db/schema.js";
 
-async function handlerFollowFeed(cmdName: string, user: User, ...args: string[]) {
+async function handlerFollowFeed(cmdName: string, user: User, ...args: string[]): Promise<void> {
   const [url] = args;
   if (!url) process.exit(1);
 

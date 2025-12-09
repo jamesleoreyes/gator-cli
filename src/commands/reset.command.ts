@@ -1,6 +1,6 @@
 import { userQueries } from "src/db/queries/user.queries";
 
-async function handlerResetDb(cmdName: string, ...args: string[]) {
+async function handlerResetDb(cmdName: string, ...args: string[]): Promise<void> {
   try {
     await userQueries.deleteAllUsers();
     console.log('All users deleted');

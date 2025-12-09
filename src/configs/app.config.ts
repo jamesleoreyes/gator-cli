@@ -2,7 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import type { Config } from "../types/index.js";
 
-function getConfigFilePath() {
+function getConfigFilePath(): string {
   const homeDir = os.homedir();
   return `${homeDir}/.gatorconfig.json`;
 };
@@ -13,7 +13,7 @@ function getJsonFromDisk<T>(path: string): T {
   return json;
 };
 
-export function setUser(userName: string) {
+export function setUser(userName: string): void {
   const config = readConfig();
   config.currentUserName = userName;
   const rawConfig = JSON.stringify(config, null, 2);
@@ -26,7 +26,7 @@ export function readConfig(): Config {
   return config;
 };
 
-function writeConfig(newConfig: string) {
+function writeConfig(newConfig: string): void {
   const configPath = getConfigFilePath();
   fs.writeFileSync(configPath, newConfig);
 };

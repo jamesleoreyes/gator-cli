@@ -2,7 +2,7 @@ import { userQueries } from "src/db/queries/user.queries.js";
 import { setUser } from "../configs/app.config.js";
 import { User } from "../db/schema.js";
 
-async function handlerRegisterUser(cmdName: string, ...args: string[]) {
+async function handlerRegisterUser(cmdName: string, ...args: string[]): Promise<void> {
   if (args.length === 0) process.exit(1);
   const username = args[0];
 

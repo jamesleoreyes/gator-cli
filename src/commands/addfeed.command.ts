@@ -3,7 +3,7 @@ import { feedQueries } from "../db/queries/feed.queries.js";
 import { printFeed } from "../utils/feed.utils.js";
 import { User } from "../db/schema.js";
 
-async function handlerAddFeed(cmdName: string, user: User, ...args: string[]) {
+async function handlerAddFeed(cmdName: string, user: User, ...args: string[]): Promise<void> {
   const [name, url] = args;
   if (!name || !url) process.exit(1);
   const existingFeed = await feedQueries.getByUrl(url);

@@ -15,7 +15,7 @@ import { handlerAllFeedsFollowedByUser } from "./commands/following.command";
 import { middlewareLoggedIn } from "./middlewares/user.middleware";
 import { CommandsRegistry } from "./types";
 
-async function main() {
+async function main(): Promise<void> {
   const commandsRegistry: CommandsRegistry = {};
   await registerCommand(commandsRegistry, 'reset', handlerResetDb);
   await registerCommand(commandsRegistry, 'login', handlerLogin);

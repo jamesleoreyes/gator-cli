@@ -1,6 +1,6 @@
 import type { RSSFeed, RSSItem } from "../types/index.js";
 
-function validateRSSFeed(rss: RSSFeed) {
+function validateRSSFeed(rss: RSSFeed): RSSFeed {
   let result: RSSFeed = rss;
 
   if (rss.channel.description) {

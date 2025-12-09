@@ -1,7 +1,7 @@
 import { feedFollowQueries } from "src/db/queries/feedFollow.queries";
 import { User } from "../db/schema.js";
 
-async function handlerAllFeedsFollowedByUser(cmdName: string, user: User, ...args: string[]) {
+async function handlerAllFeedsFollowedByUser(cmdName: string, user: User, ...args: string[]): Promise<void> {
   const allFeeds = await feedFollowQueries.getAllByUserId(user.id);
 
   for (const feed of allFeeds) {
