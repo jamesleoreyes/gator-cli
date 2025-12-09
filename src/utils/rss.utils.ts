@@ -24,11 +24,12 @@ async function fetchFeed(feedURL: string): Promise<RSSFeed> {
       process.exit(1);
     };
 
-    let rssItems: RSSItem[] = [];
-
+    
     const validRSS = validateRSSFeed(rssFeed);
     const { title, link, description, item: items } = validRSS.channel;
-
+    
+    let rssItems: RSSItem[] = [];
+    
     for (const item of items) {
       const validItem = validateRSSItem(item);
       if (!validItem) continue;

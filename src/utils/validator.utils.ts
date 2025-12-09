@@ -1,8 +1,6 @@
 import type { RSSFeed, RSSItem } from "../types/index.js";
 
 function validateRSSFeed(rss: RSSFeed): RSSFeed {
-  let result: RSSFeed = rss;
-
   if (rss.channel.description) {
     if (typeof rss.channel.description !== 'string') {
       throw new TypeError('RSS channel description must be a string');
@@ -21,6 +19,8 @@ function validateRSSFeed(rss: RSSFeed): RSSFeed {
     };
   };
 
+  let result: RSSFeed = rss;
+
   if (rss.channel.item) {
     if (!Array.isArray(rss.channel.item)) {
       result.channel.item = [];
@@ -31,10 +31,10 @@ function validateRSSFeed(rss: RSSFeed): RSSFeed {
 };
 
 function validateRSSItem(item: any): RSSItem | null {
-  if (typeof item.title !== 'string') return null;
-  if (typeof item.link !== 'string') return null;
-  if (typeof item.description !== 'string') return null;
-  if (typeof item.pubDate !== 'string') return null;
+  if (!item.title || typeof item.title !== 'string') return null;
+  if (!item.link || typeof item.link !== 'string') return null;
+  if (!item.description || typeof item.description !== 'string') return null;
+  if (!item.pubDate || typeof item.pubDate !== 'string') return null;
 
   return {
     title: item.title,
