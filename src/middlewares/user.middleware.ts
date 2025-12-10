@@ -1,4 +1,4 @@
-import { userQueries } from "../db/queries/user.queries.js";
+import { userQueries } from "../db/queries/index.js";
 import { readConfig } from "../configs/app.config.js";
 import type { CommandHandler, UserCommandHandler } from "../types/index.js";
 

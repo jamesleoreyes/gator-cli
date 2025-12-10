@@ -1,9 +1,9 @@
 import { eq, sql } from "drizzle-orm";
 import { db } from "..";
-import { type Feed, feeds } from "../schema.js";
+import { type Feed, type NewFeed, feeds } from "../schema.js";
 
 const feedQueries = {
-  async create(feed: Pick<Feed, 'userId' | 'name' | 'url'>): Promise<Feed> {
+  async create(feed: NewFeed): Promise<Feed> {
     const [result] = await db
       .insert(feeds)
       .values(feed)
@@ -36,7 +36,7 @@ const feedQueries = {
       .where(eq(feeds.id, feedId));
   },
 
-  async getNextFeedToFetch() {
+  async getNextFeedToFetch(): Promise<Feed> {
     const [feed] = await db
       .select()
       .from(feeds)

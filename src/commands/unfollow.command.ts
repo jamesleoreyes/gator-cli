@@ -1,4 +1,4 @@
-import { feedFollowQueries } from "../db/queries/feedFollow.queries.js";
+import { feedFollowQueries } from "../db/queries/index.js";
 import { User } from "../db/schema.js";
 
 async function handlerUnfollow(cmdName: string, user: User, ...args: string[]): Promise<void> {

@@ -1,4 +1,4 @@
-import { userQueries } from "../db/queries/user.queries.js";
+import { userQueries } from "../db/queries/index.js";
 import { setUser } from "../configs/app.config.js";
 import { handleInvalidArgs } from "../utils/error.utils.js";
 

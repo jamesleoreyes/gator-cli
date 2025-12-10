@@ -13,6 +13,7 @@ async function handlerAgg(cmdName: string, ...args: string[]): Promise<void> {
 
   feedUtils.scrapeFeeds();
   const interval = setInterval(() => {
+    console.log('Collecting feeds');
     feedUtils.scrapeFeeds();
   }, duration);
 

@@ -1,5 +1,3 @@
-
-
 const parseUtils = {
   duration(durationStr: string) {
     const regex = /^(\d+)(ms|s|m|h)$/;

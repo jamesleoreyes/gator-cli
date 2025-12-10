@@ -1,5 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
-import { RSSFeed, RSSItem } from "../types/index.js";
+import type { RSSFeed, RSSItem } from "../types/index.js";
 import { validatorUtils } from "./validator.utils.js";
 
 const rssUtils = {

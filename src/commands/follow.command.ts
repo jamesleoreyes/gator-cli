@@ -1,5 +1,4 @@
-import { feedQueries } from "../db/queries/feed.queries.js";
-import { feedFollowQueries } from "../db/queries/feedFollow.queries.js";
+import { feedQueries, feedFollowQueries } from "../db/queries/index.js";
 import { User } from "../db/schema.js";
 import { handleInvalidArgs } from "../utils/error.utils.js";
 

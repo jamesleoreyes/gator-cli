@@ -1,5 +1,4 @@
-import { feedQueries } from "../db/queries/feed.queries.js";
-import { userQueries } from "../db/queries/user.queries.js";
+import { feedQueries, userQueries } from "../db/queries/index.js";
 
 async function handlerGetAllFeeds(cmdName: string, ...args: string[]): Promise<void> {
   const feeds = await feedQueries.getAll();

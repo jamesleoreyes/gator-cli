@@ -1,10 +1,10 @@
 import { and, eq } from "drizzle-orm";
 import { db } from ".."
-import { feedFollows, feeds, users } from "../schema"
+import { type FeedFollowWithNames, feedFollows, feeds, users } from "../schema.js"
 
 
 const feedFollowQueries = {
-  async create(feedId: string, userId: string) {
+  async create(feedId: string, userId: string): Promise<FeedFollowWithNames> {
     const [newFeedFollow] = await db
       .insert(feedFollows)
       .values({ feedId, userId })
@@ -26,7 +26,7 @@ const feedFollowQueries = {
     return result;
   },
 
-  async getAllByUserId(userId: string) {
+  async getAllByUserId(userId: string): Promise<FeedFollowWithNames[]> {
     const result = await db
       .select({
         id: feedFollows.id,
@@ -43,7 +43,7 @@ const feedFollowQueries = {
     return result;
   },
 
-  async delete(userId: string, feedUrl: string) {
+  async delete(userId: string, feedUrl: string): Promise<void> {
     const feed = await db
       .select({id: feeds.id})
       .from(feeds)
