@@ -1,10 +1,11 @@
-import { feedQueries } from "src/db/queries/feed.queries";
-import { feedFollowQueries } from "src/db/queries/feedFollow.queries";
+import { feedQueries } from "../db/queries/feed.queries.js";
+import { feedFollowQueries } from "../db/queries/feedFollow.queries.js";
 import { User } from "../db/schema.js";
+import { handleInvalidArgs } from "../utils/error.utils.js";
 
 async function handlerFollowFeed(cmdName: string, user: User, ...args: string[]): Promise<void> {
   const [url] = args;
-  if (!url) process.exit(1);
+  if (!url) handleInvalidArgs(['url']);
 
   const feed = await feedQueries.getByUrl(url);
   if (feed) {

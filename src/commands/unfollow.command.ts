@@ -1,9 +1,9 @@
-import { feedFollowQueries } from "src/db/queries/feedFollow.queries";
+import { feedFollowQueries } from "../db/queries/feedFollow.queries.js";
 import { User } from "../db/schema.js";
 
 async function handlerUnfollow(cmdName: string, user: User, ...args: string[]): Promise<void> {
   const [url] = args;
-  if (!url) process.exit(1);
+  if (!url) throw new Error('Feed URL argument is required');
 
   await feedFollowQueries.delete(user.id, url);
 };

@@ -1,10 +1,11 @@
-import { userQueries } from "src/db/queries/user.queries.js";
+import { userQueries } from "../db/queries/user.queries.js";
 import { setUser } from "../configs/app.config.js";
 import { User } from "../db/schema.js";
+import { handleInvalidArgs } from "../utils/error.utils.js";
 
 async function handlerRegisterUser(cmdName: string, ...args: string[]): Promise<void> {
-  if (args.length === 0) process.exit(1);
-  const username = args[0];
+  const [username] = args;
+  if (!username) handleInvalidArgs(['username']);
 
   let newUser: User;
   try {

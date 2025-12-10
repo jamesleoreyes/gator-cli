@@ -1,13 +1,14 @@
-import { feedFollowQueries } from "src/db/queries/feedFollow.queries.js";
+import { feedFollowQueries } from "../db/queries/feedFollow.queries.js";
 import { feedQueries } from "../db/queries/feed.queries.js";
-import { printFeed } from "../utils/feed.utils.js";
+import { feedUtils } from "../utils/feed.utils.js";
 import { User } from "../db/schema.js";
+import { handleInvalidArgs } from "../utils/error.utils.js";
 
 async function handlerAddFeed(cmdName: string, user: User, ...args: string[]): Promise<void> {
   const [name, url] = args;
-  if (!name || !url) process.exit(1);
+  if (!name || !url) handleInvalidArgs(['name', 'url']);
   const existingFeed = await feedQueries.getByUrl(url);
-  if (existingFeed) process.exit(1);
+  if (existingFeed) throw new Error('Feed not found');
 
   const newFeed = await feedQueries.create({
     userId: user.id,
@@ -15,7 +16,7 @@ async function handlerAddFeed(cmdName: string, user: User, ...args: string[]): P
     url,
   });
   await feedFollowQueries.create(newFeed.id, user.id);
-  printFeed(newFeed, user);
+  feedUtils.printFeed(newFeed, user);
 };
 
 export { handlerAddFeed };

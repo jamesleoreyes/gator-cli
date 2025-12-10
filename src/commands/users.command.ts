@@ -1,5 +1,5 @@
-import { readConfig } from "src/configs/app.config";
-import { userQueries } from "src/db/queries/user.queries";
+import { readConfig } from "../configs/app.config.js";
+import { userQueries } from "../db/queries/user.queries.js";
 
 async function handlerGetAllUsers(cmdName: string, ...args: string[]): Promise<void> {
   try {

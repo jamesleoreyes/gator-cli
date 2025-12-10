@@ -1,0 +1,1 @@
+ALTER TABLE "feed_follows" DROP CONSTRAINT "feed_follows_user_id_unique";

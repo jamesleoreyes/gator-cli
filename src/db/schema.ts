@@ -37,7 +37,6 @@ export const feedFollows = pgTable('feed_follows', {
     .references(() => feeds.id, { onDelete: 'cascade' }),
   userId: uuid('user_id')
     .notNull()
-    .unique()
     .references(() => users.id, { onDelete: 'cascade' }),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at')

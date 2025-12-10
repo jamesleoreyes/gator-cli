@@ -1,4 +1,4 @@
-import { userQueries } from "src/db/queries/user.queries";
+import { userQueries } from "../db/queries/user.queries.js";
 
 async function handlerResetDb(cmdName: string, ...args: string[]): Promise<void> {
   try {

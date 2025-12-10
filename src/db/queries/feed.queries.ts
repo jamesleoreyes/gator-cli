@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { db } from "..";
 import { type Feed, feeds } from "../schema.js";
 
@@ -34,6 +34,15 @@ const feedQueries = {
         updatedAt: new Date(Date.now()),
       })
       .where(eq(feeds.id, feedId));
+  },
+
+  async getNextFeedToFetch() {
+    const [feed] = await db
+      .select()
+      .from(feeds)
+      .orderBy(sql`${feeds.lastFetchedAt} ASC NULLS FIRST`)
+      .limit(1);
+    return feed;
   },
 };
 
