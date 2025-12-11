@@ -15,6 +15,7 @@ async function main(): Promise<void> {
   await cmdUtils.registerCommand(commandsRegistry, 'follow', middlewareLoggedIn(cmd.handlerFollowFeed));
   await cmdUtils.registerCommand(commandsRegistry, 'unfollow', middlewareLoggedIn(cmd.handlerUnfollow));
   await cmdUtils.registerCommand(commandsRegistry, 'following', middlewareLoggedIn(cmd.handlerAllFeedsFollowedByUser));
+  await cmdUtils.registerCommand(commandsRegistry, 'browse', middlewareLoggedIn(cmd.handlerBrowse));
 
   const args = process.argv.slice(2);
   if (args.length === 0) process.exit(1);

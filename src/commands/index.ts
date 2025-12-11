@@ -8,3 +8,4 @@ export * from './feeds.command.js';
 export * from './follow.command.js';
 export * from './unfollow.command.js';
 export * from './following.command.js';
+export * from './browse.command.js';
